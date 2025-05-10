@@ -51,7 +51,10 @@ function loadReadyData(result) {
 
   birthday = result["birthday"];
 
-  var birthdayDate = new Date(result["birthday"]);
+  var birthdayDate = new Date(
+    result["birthday"].split(".").reverse().join("."),
+  );
+  console.log(result["birthday"].split("-").reverse().join("-"));
 
   var sex = result["sex"];
 
