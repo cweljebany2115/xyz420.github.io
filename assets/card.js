@@ -49,12 +49,9 @@ function loadReadyData(result) {
     result[key] = htmlEncode(result[key]);
   });
 
-  birthday = result["birthday"];
+  const birthdayDate = new Date();
 
-  var birthdayDate = new Date(
-    result["birthday"].split(".").reverse().join("."),
-  );
-  console.log(result["birthday"].split("-").reverse().join("-"));
+  birthdayDate.setFullYear(result["year"], result["month"], result["day"]);
 
   var sex = result["sex"];
 
@@ -91,7 +88,14 @@ function loadReadyData(result) {
   setData("fathersName", "WOJCIECH");
   // setData("mothersName", result["mothersName"].toUpperCase());
   setData("mothersName", "AGATA");
-  setData("birthday", birthday);
+  setData(
+    "birthday",
+    birthdayDate.getDate() +
+      "." +
+      birthdayDate.getMonth() +
+      "." +
+      birthdayDate.getFullYear(),
+  );
   setData("familyName", result["familyName"]);
   setData("sex", textSex);
   setData("fathersFamilyName", result["fathersFamilyName"]);

@@ -81,24 +81,17 @@ document.querySelector(".go").addEventListener("click", () => {
     params.set("image", upload.getAttribute("selected"));
   }
 
-  var birthday = "";
-  var dateEmpty = false;
-  document.querySelectorAll(".date_input").forEach((element) => {
-    birthday = birthday + "." + element.value;
-    if (isEmpty(element.value)) {
+  const day = document.getElementById("day");
+  const month = document.getElementById("month");
+  const year = document.getElementById("year");
+
+  [day, month, year].forEach((input) => {
+    if (isEmpty(input.value)) {
       dateEmpty = true;
+    } else {
+      params.set(input.id, input.value);
     }
   });
-
-  birthday = birthday.substring(1);
-
-  if (dateEmpty) {
-    var dateElement = document.querySelector(".date");
-    dateElement.classList.add("error_shown");
-    empty.push(dateElement);
-  } else {
-    params.set("birthday", birthday);
-  }
 
   document.querySelectorAll(".input_holder").forEach((element) => {
     var input = element.querySelector(".input");
