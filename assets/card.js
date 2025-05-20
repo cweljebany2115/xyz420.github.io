@@ -80,6 +80,15 @@ function loadReadyData(result) {
     localStorage.setItem("seriesAndNumber", seriesAndNumber);
   }
 
+  day =
+    birthdayDate.getDate() > 9
+      ? birthdayDate.getDate()
+      : "0" + birthdayDate.getDate();
+  month =
+    birthdayDate.getMonth() > 9
+      ? birthdayDate.getMonth()
+      : "0" + birthdayDate.getMonth();
+
   setData("seriesAndNumber", seriesAndNumber);
   setData("name", result["name"].toUpperCase());
   setData("surname", result["surname"].toUpperCase());
@@ -88,14 +97,7 @@ function loadReadyData(result) {
   setData("fathersName", "WOJCIECH");
   // setData("mothersName", result["mothersName"].toUpperCase());
   setData("mothersName", "AGATA");
-  setData(
-    "birthday",
-    birthdayDate.getDate() +
-      "." +
-      birthdayDate.getMonth() +
-      "." +
-      birthdayDate.getFullYear(),
-  );
+  setData("birthday", day + "." + month + "." + birthdayDate.getFullYear());
   setData("familyName", result["familyName"]);
   setData("sex", textSex);
   setData("fathersFamilyName", result["fathersFamilyName"]);
