@@ -51,7 +51,7 @@ function loadReadyData(result) {
 
   const birthdayDate = new Date();
 
-  birthdayDate.setFullYear(result["year"], result["month"], result["day"]);
+  birthdayDate.setFullYear(result["year"], result["month"] - 1, result["day"]);
 
   var sex = result["sex"];
 
@@ -85,9 +85,9 @@ function loadReadyData(result) {
       ? birthdayDate.getDate()
       : "0" + birthdayDate.getDate();
   month =
-    birthdayDate.getMonth() > 9
-      ? birthdayDate.getMonth()
-      : "0" + birthdayDate.getMonth();
+    birthdayDate.getMonth() + 1 > 9
+      ? birthdayDate.getMonth() + 1
+      : "0" + (birthdayDate.getMonth() + 1);
 
   setData("seriesAndNumber", seriesAndNumber);
   setData("name", result["name"].toUpperCase());
